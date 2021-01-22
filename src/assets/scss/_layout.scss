@@ -1,0 +1,9 @@
+.navbar-brand {
+  @include hideText(130px, auto, '~@/assets/img/logo.png', '~@/assets/img/logo.png');
+}
+
+footer {
+  .decorate {
+    height: 56px;
+  }
+}
