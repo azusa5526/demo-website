@@ -1,9 +1,9 @@
-.about {
+.join {
   .top-banner {
     position: relative;
     min-height: 300px;
     height: 50vh;
-    background-image: url('~@/assets/img/about_top.jpg');
+    background-image: url('~@/assets/img/join_top.jpg');
     @include bg-img(cover, center);
   }
 }

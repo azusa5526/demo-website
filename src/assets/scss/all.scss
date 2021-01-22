@@ -1,14 +1,16 @@
 /* --- Required --- */
-@import "~bootstrap/scss/functions";
-@import "./mixin";                //custom
-@import "./helpers/variables";    //custom
-@import "~bootstrap/scss/mixins/";
+@import '~bootstrap/scss/functions';
+@import './mixin'; //custom
+@import './helpers/variables'; //custom
+@import '~bootstrap/scss/mixins/';
 
 /* --- Bootstrap main --- */
-@import "~bootstrap/scss/bootstrap.scss";
+@import '~bootstrap/scss/bootstrap.scss';
 
 /* --- pages --- */
 @import './global';
 @import './layout';
 @import './index';
 @import './about';
+@import './contact';
+@import './join';
