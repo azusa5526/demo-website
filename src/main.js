@@ -6,6 +6,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 import animated from 'animate.css';
 import WOW from 'wow.js';
 import LoadScript from 'vue-plugin-load-script';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 Vue.config.productionTip = false;
 
@@ -19,6 +21,7 @@ new WOW({
   resetAnimation: true
 }).init();
 Vue.use(LoadScript);
+Vue.component('Loading', Loading);
 
 new Vue({
   router,

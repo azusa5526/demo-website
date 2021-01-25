@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <loading :active.sync="isLoading" />
     <Navbar></Navbar>
     <main class="contact">
       <div class="top-banner">
@@ -15,7 +16,7 @@
         <div class="container-md">
           <div class="row mb-11">
             <div class="col-12 col-lg-10 offset-lg-1">
-              <form class="mb-12">
+              <form class="mb-12" id="messageForm">
                 <fieldset>
                   <legend class="mb-8 fw-light">Leave a Message</legend>
                   <div class="mb-5">
@@ -49,7 +50,11 @@
                     <textarea type="text" class="form-control" id="message" v-model="message" />
                   </div>
 
-                  <button class="btn btn-lg btn-outline-dark border-2 fs-6 px-6" @click="sendEmail()">
+                  <button
+                    type="submit"
+                    class="btn btn-lg btn-outline-dark border-2 fs-6 px-6"
+                    @click.prevent="sendEmail()"
+                  >
                     SUBMIT
                   </button>
                 </fieldset>
@@ -81,6 +86,30 @@
       </div>
     </main>
 
+    <div
+      class="modal fade"
+      id="emailModal"
+      tabindex="-1"
+      aria-labelledby="emailModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="emailModalLabel">
+              <i class="bi bi-chat-left-text-fill ms-2 me-4"></i>{{ modalMessage }}
+            </h6>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <Footer></Footer>
   </div>
 </template>
@@ -89,6 +118,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Email from '@/assets/js/smtp.js';
+import Modal from 'bootstrap/js/dist/modal';
 
 export default {
   name: 'Contact',
@@ -100,22 +130,37 @@ export default {
   data() {
     return {
       map: `https://www.google.com/maps/embed/v1/place?key=${process.env.VUE_APP_GCP_API_KEY}&q=新威力新竹耳機專賣店`,
+      isLoading: false,
       name: '',
       email: '',
       subject: '',
-      message: ''
+      message: '',
+      modalMessage: ''
     };
   },
 
   methods: {
     sendEmail() {
+      this.isLoading = true;
       Email.send({
         SecureToken: '26a67c6e-d769-46af-8565-78acadf6cefd',
         To: 'azusa5526@gmail.com',
         From: this.email,
         Subject: `${this.name}: ${this.subject}`,
         Body: this.message
-      }).then((message) => alert(message));
+      })
+        .then(() => {
+          const emailModal = new Modal(document.getElementById('emailModal'));
+          this.modalMessage = 'Send message successfully';
+          this.isLoading = false;
+          emailModal.show();
+        })
+        .catch((error) => {
+          const emailModal = new Modal(document.getElementById('emailModal'));
+          this.modalMessage = `Send message fail ${error}`;
+          this.isLoading = false;
+          emailModal.show();
+        });
     }
   }
 };
