@@ -15,12 +15,12 @@
         <div class="container-md">
           <div class="row mb-11">
             <div class="col-12 col-lg-10 offset-lg-1">
-              <form class="mb-12" action="https://formspree.io/f/xaylvaoo" method="POST">
+              <form class="mb-12">
                 <fieldset>
                   <legend class="mb-8 fw-light">Leave a Message</legend>
                   <div class="mb-5">
                     <label for="name" class="form-label fs-5 fw-light">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" />
+                    <input type="text" class="form-control" id="name" v-model="name" />
                   </div>
 
                   <div class="mb-11">
@@ -32,7 +32,7 @@
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      name="reply to"
+                      v-model="email"
                     />
                     <div id="emailHelp" class="form-text">
                       We'll never share your email with anyone else.
@@ -41,15 +41,15 @@
 
                   <div class="mb-5">
                     <label for="subject" class="form-label fs-5 fw-light">Subject</label>
-                    <input type="text" name="subject" class="form-control" id="subject" />
+                    <input type="text" class="form-control" id="subject" v-model="subject" />
                   </div>
 
                   <div class="mb-8">
                     <label for="message" class="form-label fs-5 fw-light">Message</label>
-                    <textarea type="text" name="message" class="form-control" id="message" />
+                    <textarea type="text" class="form-control" id="message" v-model="message" />
                   </div>
 
-                  <button type="submit" class="btn btn-lg btn-outline-dark border-2 fs-6 px-6">
+                  <button class="btn btn-lg btn-outline-dark border-2 fs-6 px-6" @click="sendEmail()">
                     SUBMIT
                   </button>
                 </fieldset>
@@ -88,6 +88,7 @@
 <script>
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Email from '@/assets/js/smtp.js';
 
 export default {
   name: 'Contact',
@@ -106,6 +107,16 @@ export default {
     };
   },
 
-  methods: {}
+  methods: {
+    sendEmail() {
+      Email.send({
+        SecureToken: '26a67c6e-d769-46af-8565-78acadf6cefd',
+        To: 'azusa5526@gmail.com',
+        From: this.email,
+        Subject: `${this.name}: ${this.subject}`,
+        Body: this.message
+      }).then((message) => alert(message));
+    }
+  }
 };
 </script>
