@@ -6,7 +6,7 @@
         <div class="mask"></div>
         <div class="container position-relative h-100">
           <div class="slogan d-flex flex-column align-items-center w-100 px-6">
-            <strong class="h2 text-white text-center">Experience is the mother of wisdom</strong>
+            <strong class="h2 text-white text-center wow animate__bounceIn">Experience is the mother of wisdom</strong>
             <p class="text-gray text-center fs-5 fw-light mt-4">
               COMMUNICATIONS, COMPUTER VISION, VIDEO & IMAGE PROCESSING
             </p>

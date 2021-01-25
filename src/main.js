@@ -5,6 +5,7 @@ import router from './router';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import animated from 'animate.css';
 import WOW from 'wow.js';
+import LoadScript from 'vue-plugin-load-script';
 
 Vue.config.productionTip = false;
 
@@ -17,6 +18,7 @@ new WOW({
   live: true,
   resetAnimation: true
 }).init();
+Vue.use(LoadScript);
 
 new Vue({
   router,

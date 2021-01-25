@@ -6,7 +6,7 @@
     >
       <div class="container-fluid">
         <h1 class="mb-0 ms-1 ms-md-4 py-2 py-sm-3 py-md-4">
-          <router-link class="navbar-brand p-0 m-0" to="/">demo-website</router-link>
+          <router-link class="navbar-brand p-0 m-0 wow animate__animated animate__fadeInUp animate__faster animate__delay-1s" to="/">demo-website</router-link>
         </h1>
         <button
           class="navbar-toggler"
@@ -19,8 +19,8 @@
         >
           <i class="bi bi-list fs-4" :class="{ 'text-white': isTop, 'text-dark': !isTop }"></i>
         </button>
-        <div class="collapse navbar-collapse d-md-flex justify-content-end pt-4" id="navbarNav">
-          <ul class="navbar-nav me-1 me-md-4">
+        <div class="collapse navbar-collapse d-md-flex justify-content-end pt-4 pt-md-0" id="navbarNav">
+          <ul class="navbar-nav me-1 me-md-4 wow animate__animated animate__fadeInUp animate__faster animate__delay-1s">
             <li class="nav-item px-md-3 px-xl-4">
               <router-link
                 class="nav-link"
