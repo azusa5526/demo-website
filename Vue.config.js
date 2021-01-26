@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/demo-website/'
+  publicPath: '/demo-websiteref.tk/'
 };
