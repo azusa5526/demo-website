@@ -25,6 +25,14 @@ header, main, footer {
   }
 }
 
+.foucus-0 {
+  border: 0;
+  &:focus {
+    border: 0;
+    box-shadow: 0 0 0 0;
+  }
+}
+
 .mask {
   position: absolute;
   top: 0;
@@ -33,6 +41,7 @@ header, main, footer {
   left: 0;
   background-color: rgba(41, 41, 41, 0.5);
   z-index: 90;
+  
 }
 
 .slogan {

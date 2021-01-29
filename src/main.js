@@ -7,6 +7,7 @@ import animated from 'animate.css';
 import WOW from 'wow.js';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import i18n from './common/plugins/vue-i18n';
 
 Vue.config.productionTip = false;
 
@@ -23,6 +24,7 @@ Vue.component('Loading', Loading);
 
 new Vue({
   router,
+  i18n,
   render: (h) => h(App)
 }).$mount('#app');
 
